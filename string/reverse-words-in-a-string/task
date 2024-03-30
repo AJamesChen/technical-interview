@@ -1,0 +1,10 @@
+Reverse the words in a string
+
+Write a short program to reverse the order of words in the following string:
+
+var dwarves = “bashful doc dopey grumpy happy sleepy sneezy”;
+
+Your output should look like this:
+
+sneezy sleepy happy grumpy dopey doc bashful
+
