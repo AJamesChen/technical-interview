@@ -66,9 +66,9 @@ void print_k_closest_numbers(vector<int> &input, size_t k, int x)
             break;
         }
 
-        if (abs(input[mid] - x) < abs(input[left] - x)) {
+        if (abs(input[mid] - x) <= abs(input[left] - x)) {
             left = mid + 1;
-        } else if (abs(input[mid] - x) < abs(input[right] - x)) {
+        } else if (abs(input[mid] - x) <= abs(input[right] - x)) {
             right = mid - 1;
         }
 
@@ -96,19 +96,13 @@ void print_k_closest_numbers(vector<int> &input, size_t k, int x)
         if (left > 0 && abs(input[left - 1] - x) <= abs(input[right + 1] - x)) {
             left -= 1;
             ++count;
-        } 
-        
-        if (right < (int)(input.size() - 1) && abs(input[left - 1] - x) >= abs(input[right + 1] - x)) {
+        } else if (right < (int)(input.size() - 1) && abs(input[left - 1] - x) >= abs(input[right + 1] - x)) {
             right += 1;
             ++count;
-        }
-
-        if (right == (int)(input.size() - 1)) {
+        } else if (right == (int)(input.size() - 1)) {
             left -= 1;
             ++count;
-        }
-
-        if (left == 0) {
+        } else if (left == 0) {
             right += 1;
             ++count;
         }
@@ -120,7 +114,6 @@ void print_k_closest_numbers(vector<int> &input, size_t k, int x)
     cout << input[right] << "\n" << endl;
 }
 
-
 int main()
 {
     vector<int> input{ 1, 23, 12, 9, 30, 2, 50, -1, -20, -13 };
@@ -130,4 +123,9 @@ int main()
     print_k_closest_numbers(input, 10, 3);
     print_k_closest_numbers(input, 3, 10);
     print_k_closest_numbers(input, 5, 9);
+
+    vector<int> input2{ 1, 1, 1, 1, 30, 30, 30, 30, 30, 30 };
+    print_k_closest_numbers(input2, 5, 9);
+    print_k_closest_numbers(input2, 4, 9);
+    print_k_closest_numbers(input2, 6, 9);
 }
