@@ -24,9 +24,10 @@ int merge_interval(vector<pair<int, int>> &output, vector<pair<int, int>> &input
     
     pair<int, int> p1 = input.back();
     input.pop_back();
-    pair<int, int> p2 = input.back();
 
-    while (input.size() > 0) { 
+    while (input.size() > 0) {
+        pair<int, int> p2 = input.back();
+ 
         if (p1.second >= p2.first) {
             input.pop_back();
             input.push_back(make_pair(p1.first, p2.second));
@@ -36,7 +37,6 @@ int merge_interval(vector<pair<int, int>> &output, vector<pair<int, int>> &input
 
         p1 = input.back();
         input.pop_back();
-        p2 = input.back();
     }
 
     output.push_back(make_pair(p1.first, p1.second));
